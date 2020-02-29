@@ -1,14 +1,25 @@
 import React from "react";
-// import Board from "./components/Board";
+import Board from "./components/Board";
+import data from "./sampleData";
 
 class App extends React.Component {
   state = {
-    boardTitle: "house ideas"
+    borads: []
+  };
+
+  componentDidMount() {
+    this.setState({ borads: data.boards });
+  }
+
+  updateState = () => {
+    this.setState({ borads: data.boards });
   };
   render() {
     return (
       <div>
-        <p>{this.state.boardTitle}</p>
+        {this.state.borads.map(board => (
+          <Board board={board} />
+        ))}
       </div>
     );
   }
